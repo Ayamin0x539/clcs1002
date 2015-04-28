@@ -1,7 +1,5 @@
-﻿
 
-# Declare images below this line, using the image statement.
-# eg. image eileen happy = "eileen_happy.png"
+# Backgrounds.
 image black = "#000000"
 image bg windowbg = "window.png"
 image bg bed_day = "bedroomday.png"
@@ -51,29 +49,32 @@ image bg buttons5 = "buttons5.png"
 
 
 #Character images here.
-image mom normal = "mom0001.png"
-image mom surprised = "mom0002.png"
-image aura normal = "aura0001.png" # made a bit smaller, for now.
-image aura slight_surprise = "aura0002.png"
-image aura enthusiastic = "aura0003.png"
-image aura nervous = "aura0004.png"
-image aura he = "aura0005.png"
-image aura shock = "aura0006.png"
-image aura happy = "aura0007.png"
-image aura sleep = "aura0008.png"
-image aura sleepy = "aura0009.png"
-image aura concentrating = "aura0010.png"
+image mom normal = "mom0001.png" # normal expression for mother
+image mom surprised = "mom0002.png" # surprised mother
+image aura normal = "aura0001.png" # aura: normal
+image aura slight_surprise = "aura0002.png" #aura slightly surprised
+image aura enthusiastic = "aura0003.png" # aura enthusiastic (mouth wide open)
+image aura nervous = "aura0004.png" # nervous aura (sweat drop, smiling nervously)
+image aura he = "aura0005.png" # frowning aura
+image aura shock = "aura0006.png" # surprised aura
+image aura happy = "aura0007.png" # happy aura; not as wide mouth as "enthusiastic"
+image aura sleep = "aura0008.png" # aura asleep. eyes closed.
+image aura sleepy = "aura0009.png" # aura sleepy. eyes slightly open.
+image aura concentrating = "aura0010.png" # concentrating (x with music effect)
 image sumner normal = "sumner0001.png"
 image sumner smile = "sumner0002.png"
 image sumner glad = "sumner0003.png"
 image sumner smile_nice = "sumner0004.png"
 image sumner worried = "sumner0005.png"
 image dylan normal = "dylan0001.png"
-image dylan thinking = "dylan0002.png"
+image dylan thinking = "dylan0002.png" # dylan with eyes closed
 image dylan serious = "dylan0003.png"
 image randall normal = "randall0001.png"
 image randall sigh = "randall0002.png"
 image randall glad = "randall0003.png"
+image passerboy normal = "passerboy0007.png"
+image passerboy confused = "passerboy0008.png"
+image passergirl normal = "steph0001.png"
 #image aura surprised = ""
 #image test small = "test0019.png" #the smaller one
 
@@ -89,8 +90,8 @@ define music_light = "Carefree.mp3" # light, carefree music
 define music_complex = "Lift Motif.mp3" # played when studying philosophies?
 define music_day = "Summer Day.mp3" # daily music//music for walking around during the day
 define music_night = "George Street Shuffle.mp3" # music for walking around at night
-define music_class = "Infinite Perspective.mp3" # like Town, Flow of Time, People
-define music_pondering = "On the Ground.mp3" # music for when MC is thinking.
+define music_class = "Infinite Perspective.mp3" # music for classtime with Ms. Sumner
+define music_pondering = "On the Ground.mp3" # music for when MC is thinking. or something dark.
 define music_end = "Heartwarming.mp3" # credits theme, for now, I suppose.
 define music_howl = "Gypsy Shoegazer.mp3" # music when Howl movie plays
 
@@ -113,13 +114,44 @@ image aristotle = "aristotle.jpg"
 image eric = "eric.jpg"
 image akira = "akira.png"
 image origami = "origami.png"
+image lecrimp = "lecrimp.jpg"
+image airbag = "airbag.jpg"
+image somaesthetics = "somaesthetics.jpg"
+image echromi = "echromi.png"
+image combines = "combines.png"
+image stackeddeck = "stackeddeck.jpg"
+image lifecycle = "lifecycle.jpg"
+image laundry = "laundry.png"
+image picturesque = "picturesque.png"
+image citylights = "citylights.jpg"
+image synesthesia = "synesthesia.png"
+image imagine = "imagine.png"
+image groupthink = "groupthink.png"
+image tv = "tv.png"
+image turtle = "turtle.png"
+image watercolor = "watercolor.png"
+image creativeprocess = "creativeprocess.png"
+image chickenegg = "chickenegg.png"
+image brain = "brain.png"
+image together = "together.png"
+image decisiontree = "decisiontree.png"
+image eatpraylove = "eatpraylove.jpg"
+image mirror = "mirror.png"
+image bluestone = "bluestone.png"
+image rainbow = "rainbow.png"
+image happysad = "happysad.png"
+image sunwaves = "sunwaves.png"
+image protein = "protein.png"
+image intermedia = "intermedia.png"
+
 
 # The game starts here.
 label start:
-    ### debug
-    #jump test_scene
-    ### debug
-    #jump week_6_2
+    ### -DEBUG MODE-
+    $ debug_mode = False # set to True to enable debug mode, False to disable
+    if debug_mode:
+        jump test_scene
+    ### -DEBUG MODE-
     
     #Starting relationship values // POINT_AURA, POINT_DYLAN, POINT_SUMNER, and POINT_RANDALL.
     $ pt_a = 0 # points with aura
@@ -333,8 +365,9 @@ label day_1_cont:
     "... but the mysterious girl was no where to be found."
     "I continued onwards to school."
     jump day_1_school_morning
-    
+
 label day_1_school_morning:
+    # philosophy of the arts video
     scene bg school_gate with dissolve
     play music music_day
     "I finally arrived at school."
@@ -818,7 +851,9 @@ label day_1_school_morning:
     "..."
     jump day_2
     
+# second day
 label day_2:
+    # Snow and Elkins
     m "Are you up?"
     "I could hear my mom calling me from downstairs again."
     r "Nngh..."
@@ -1163,6 +1198,7 @@ label day_2:
     jump day_3
     
 label day_3:
+    # watch between the folds
     play music music_bed fadein 1.0
     "The next day."
     scene bg bed_day with dissolve
@@ -1543,14 +1579,14 @@ label day_3:
     "... and with that, she ran out the door."
     "Although it seemed like she was running, I couldn't hear any footsteps leaving the hall."
     "I decided to head home myself."
-    show bg hallway_night with dissolve
+    scene bg hallway_night with dissolve
     play music music_night fadeout 1.0 fadein 1.0
     "I headed out into the hallway."
-    show bg park_night with dissolve
+    scene bg park_night with dissolve
     "I passed the park on the way home."
-    show bg house_night with dissolve
+    scene bg house_night with dissolve
     "And finally got home."
-    show bg bed_night with dissolve
+    scene bg bed_night with dissolve
     "I was exhausted."
     "I realized that I had an essay to write."
     "Today was my third day of school, a Wednesday, and it was assigned yesterday, on the second day."
@@ -1564,6 +1600,7 @@ label day_3:
     jump day_4
     
 label day_4:
+    # between the folds 2
     "..."
     m "-eading out! Make sure you wake up for school!"
     "I could hear the end of my mom's phrase, and then a door slamming as the house fell silent."
@@ -1572,7 +1609,7 @@ label day_4:
     "I opened my eyes."
     "Today was the fourth day of school."
     "I packed the math homework I stayed up late doing last night, and got ready."
-    scene house_day with dissolve
+    scene bg house_day with dissolve
     "I headed downstairs."
     "And headed outside."
     scene bg park with dissolve
@@ -1582,7 +1619,7 @@ label day_4:
     "But other than that, no one else was there."
     scene bg park with slideright
     "I kept walking."
-    scene bg school_entrance with dissolve
+    scene bg school_gate with dissolve
     "And eventually reached the school's entrance."
     "Thursday."
     "I joined the swarming colony of students migrating through the gates."
@@ -1809,7 +1846,7 @@ label weekend_1:
     scene bg park with dissolve
     "Walked to school like usual."
     "..."
-    scene bg school_entrance with dissolve
+    scene bg school_gate with dissolve
     "Arrived to school like usual."
     scene bg hallway with dissolve
     "..."
@@ -1849,10 +1886,17 @@ label weekend_1:
     scene bg bed_night with dissolve
     "... and, of course, in the end, I didn't work on my essay at all."
     scene black with dissolve
+    # weekend
     "Over the weekend I didn't really do much."
     "I think I watched TV for a bit."
     "Maybe read a few comics."
     "I finished the worksheet on that Folds video that we were assigned."
+    "Though to be honest, I didn't remember much of it."
+    "I had a bunch of strange dreams..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene black with dissolve
     "..."
     "Before I knew it, it was Monday of the second week already."
     "I hadn't started my essay."
@@ -1861,6 +1905,7 @@ label weekend_1:
 
 #We'll start naming labels by week instead of day now. i.e., week_<week#>_<day#>.
 label week_2_1:
+    #Ginsberg's E.Chromi
     "..."
     "......"
     m "I'm heading out!"
@@ -1885,7 +1930,7 @@ label week_2_1:
     "... but there was nothing there."
     #OPTION: wait around for Aura? paralellism?
     "I kept on walking to school."
-    scene bg school_entrance with dissolve
+    scene bg school_gate with dissolve
     "All of the students shuffling in through the school doors looked like zombies."
     "It probably had something to do with the fact that today is Monday."
     "I probably looked the same as them."
@@ -2152,11 +2197,60 @@ label week_2_1:
     "... I decided I would ask her the next time I saw her."
     stop music fadeout 1.0
     "I dozed off into a deep sleep."
-
+    scene black with dissolve
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    "..."
+    scene black with dissolve
+    jump week_2_2
 
 label week_2_2:
     #Reading 1: Dick Higgins: Synesthesia and Intersenses: Intermedia
-    
+    # we need to start going to grid world now.
+    play music music_bed fadein 1.0
+    scene bg bed_day with dissolve
+    "... I woke to the sound of birds chirping outside."
+    "It looks like my mom had already left for school."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg bed_day with dissolve
+    "... what was that?"
+    "... Probably just the remnants of a dream."
+    "I got ready for school."
+    scene bg house_day with dissolve
+    "..."
+    "... and started heading out."
+    scene bg park with dissolve
+    "I passed by the park on my way to school, as always."
+    menu:
+        "I decide to..."
+        "Wait around for a bit.":
+            "I waited for about five minutes."
+            "... but then realized that I would probably be late for class if I wasted anymore time."
+            "I kept on walking to school."
+        "Keep walking.":
+            "There was nothing else to see here, so I kept on walking to school."
+    scene bg school_gate with dissolve
+    "I finally got to Brightview High."
+    "It seemed I was running a bit later than usual, as the number of students entering seemed fewer than yesterday."
+    scene bg hallway with dissolve
+    "I walked in, and found my way to class 2A."
+    "As soon as I put my hand on the door, I had a splitting headache."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg hallway with dissolve
+    "Oww... what was that?"
+    "..."
+    "Shrugging it off, I entered the class room."
+    scene bg class_entrance_day with dissolve
+    s "- called \"intermedia\"."
+    show sumner normal at right with dissolve
+    "Everyone was staring at me."
+    "Looks like I actually was a bit late this time."
+    "Dylan even made it here before me."
+    "I took my usual seat in the back."
+    scene bg class_day with dissolve
+    "..."
     ## class
     show sumner normal at center with dissolve
     s "Today, we will be learning about a topic called \"intermedia\"."
@@ -2219,12 +2313,257 @@ label week_2_2:
     s "And that concludes today's class. We will be reading the poem {i}Howl{/i} tomorrow."
     s "Class dismissed."
     "I packed my things and began heading to lunch."
-    ## lunch
+    hide sumner with dissolve
+    scene bg hallway with dissolve
+    play music music_light fadeout 1.0 fadein 1.0
+    show dylan normal at right with dissolve
+    "Dylan came up beside me."
+    d "I'm starving."
+    r "Me too."
+    d "Where were you this morning?"
+    r "What do you mean?"
+    d "You're usually never late today."
+    r "Hmm... I don't know, I guess I overslept."
+    a "Psh, you didn't oversleep."
+    "...? I heard a voice behind me."
+    "I turned around."
+    show aura normal at center with dissolve
+    play music music_aura fadeout 1.0 fadein 1.0
+    a "Heya."
+    r "Hey! Is it lunch time for you too?"
+    show aura happy with dissolve
+    a "I told you, I don't go to this school!"
+    r "Whaaaat... then why are you here?"
+    show aura nervous with dissolve
+    a "Er... There was something I needed to tell you."
+    d "Hey, who are you talking to?"
+    show aura normal with dissolve
+    "Dylan interrupted."
+    if mentioned_aura:
+        r "This is the girl with the white hair I told you about during lunch the other day."
+    else:
+        r "This is someone I met at the park while walking to school one day. Her name is Aurelia, but she goes by Aura."
+    "I motioned my hand towards Aura."
+    d "Uhh..."
+    "Dylan followed my gesture."
+    "But it looked like he was looking past Aura."
+    stop music
+    d "Where?"
+    r "... Right there! Don't you see her? Kind of hard to miss, she's the only girl with white hair probably in the entire school."
+    d "..."
+    show dylan thinking with dissolve
+    d "I don't see anything."
+    "...?"
+    "I decided to ask Aura."
+    r "Hey, what's going on?"
+    show aura he with dissolve
+    play music music_pondering
+    a "..."
+    "Something wasn't right."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg hallway with dissolve
+    show aura he at center
+    show dylan thinking at right
+    "Ugh... {w} It was getting worse."
+    "I noticed a girl passing by."
+    r "Hey, you!"
+    "I grabbed her."
+    show passergirl normal at left with moveinleft
+    pg "?!"
+    r "Do you see this person?!"
+    "I pointed at Aura in frustration."
+    pg "... what person? Sorry, but I have to get to class. You're wasting my time."
+    hide passergirl with dissolve
+    "..."
+    "This wouldn't do."
+    "I found another person, this time a boy walking by."
+    "Judging by the pace he was walking at, it looked like he was heading to lunch."
+    "I pulled him over."
+    show passerboy normal at left with moveinleft
+    r "Hey. Do you see the girl here with white hair?"
+    pb "Um? Excuse me?"
+    r "The girl with the white hair, standing right there!"
+    "I motioned with my hand again, frantically."
+    show passerboy confused at left with dissolve
+    pb "Uh... sorry, I don't know what you're talking about..."
+    "The student put on a confused expression."
+    "..."
+    r "Really? You can't see anything?"
+    pb "Um... All I can see is your friend with green hair. I don't see anyone with white hair anywhere around here..."
+    "The boy looked to his left and his right, as if he were actually looking for someone with white hair..."
+    "When that very person was in front of me. Aura."
+    d "Hey. There really is nothing there, you know."
+    "..."
+    "What was going on?"
+    pb "I'm kind of hungry, so I'm going to go to lunch now..."
+    "Ugh."
+    r "Fine."
+    hide passerboy with dissolve
+    "I probably seemed like a bully."
+    show dylan normal with dissolve
+    d "Hey, are you alright?"
+    r "Yeah..."
+    "I looked at Aura."
+    r "... what are you?"
+    show aura sleepy with dissolve
+    a "Umm... I'll have to talk to you later..."
+    hide aura with dissolve
+    r "Wait!"
+    "..."
+    d "Are you sure? You look like you're yelling at thin air."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg hallway with dissolve
+    show dylan normal at right
+    "It happened again."
+    "Just what..."
+    "I was in a state of utter confusion."
+    d "You're probably just hungry."
+    "Yeah. Hunger. That must be it."
+    r "I think so too... let's get some food."
+    "We continued to the cafeteria."
+    scene bg cafeteria with dissolve
+    play music music_day fadeout 1.0 fadein 1.0
+    "..."
+    "The line was short this time. It looks like we wasted too much time in the hallway on the way here."
+    "As a result, we had less time to eat."
+    show dylan normal at right with dissolve
+    d "Feeling better?"
+    menu:
+        "I'm..."
+        "Spectacular.":
+            r "Yeah. I'm great."
+            r "I was probably just hungry, like you said."
+            d "That's good."
+            "I finished up my sandwich quickly, since we didn't have that much time left."
+        "Still feeling a bit dizzy.":
+            r "Not really... but I think I'm just hungry."
+            r "Maybe I just need to eat a bit more."
+            d "Yeah, probably."
+            "But there wasn't really that much time."
+            "I quickly wolfed down my sandwich."
+    "It was almost time for Randall's class."
+    d "I don't think I'm going to go today."
+    r "Huh? How come?"
+    d "I didn't do the homework."
+    r "... still, you'll miss out on today's assignment."
+    d "It's all good. I'll give you a call later today."
+    r "No good. My phone line's still down."
+    d "I'll just come by then."
+    "..."
+    d "Plus, I want to try out the English muffin they have here today. I think this is the first time they had that in stock."
+    r "... Alright. Whatever suits you."
+    "I threw away my garbage and got up."
+    hide dylan with dissolve
+    scene bg corridor_afternoon with dissolve
+    "I started walking towards Mr. Randall's class."
+    scene bg math_afternoon with dissolve
+    "..."
+    show randall normal at center with dissolve
+    ran "Good afternoon, everybody."
+    "Class started like usual."
+    ran "We'll discuss the properties of -"
+    stop music
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    "..."
+    "What just..."
+    "Am I seeing things?"
+    "I blinked my eyes a few times."
+    with fade
+    "{i}Blink.{/i}"
+    with fade
+    "{i}Blink.{/i}"
+    scene bg math_afternoon with fade
+    show randall normal at center
+    ran "- and then we should be all set for next week's test."
+    "Phew."
+    play music music_day fadein 1.0
+    "I was back to normal."
+    "Uhh..."
+    "Wait, did Mr. Randall just say..."
+    stop music
+    "... Next week's test?!"
+    "Wait, what?"
+    "..."
+    "I heard scuffling as the entire class packed up their things."
+    "Wait. Packing up their things?"
+    "Wait..."
+    "Waitwaitwaitwaitwaitwaitwait."
+    "Waitwaitwaitwaitwaitwaitwaitwaitwaitwaitwaitwaitwait!"
+    "I looked at the clock on the wall."
+    play music music_pondering
+    "... it was indeed dismissal time."
+    "Following everyone else's motion, I started to pack my bags as well."
+    "I was still trying to sort out just what had happened."
+    "I missed the entire class..."
+    "It was as if I jumped forward in time."
+    "I had no recollections of anything that had happened during math class. Did math class even happen at all?"
+    "If something doesn't exist inside of my memory... did it really even happen?"
+    "..."
+    "I began to walk home."
+    scene bg corridor_afternoon with dissolve
+    "..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg corridor_night with dissolve
+    "I was so out of it."
+    "Something was terribly wrong."
+    scene bg park_night with dissolve
+    "..."
+    "I hadn't even noticed that night fallen."
+    "My head hurted so much."
+    show aura sleepy at left with dissolve
+    "I didn't even notice the girl sitting on the slide in the park."
+    a "..."
+    hide aura with dissolve
+    scene bg house_night with dissolve
+    "I walked into my house. Was this even my house? {w} ..........."
+    scene bg bed_night with dissolve
+    "I don't think I even remember walking up to my room."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg bed_day with dissolve
+    "I had turned on the lights to get something."
+    "I don't remember what."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg bed_night with dissolve
+    "..."
+    scene black with dissolve
+    stop music
+    "And then everything was cast into the void."
+    "..."
+    "I think I had a dream."
+    show aura sleep with dissolve
+    "..."
+    "Who was that?"
+    a "..."
+    a "You'll have to pay attention..."
+    a "In the room... if you want to..."
+    a "... escape."
+    "... escape?"
+    hide aura with dissolve
+    "From what?"
+    "..."
+    "I felt as free{w} as{w} I{w} ever{w} could{w} be."
     
 
 label week_2_3:
     # HOWL poem
     ## class
+    scene bg bed_day with dissolve
+    play music music_bed fadein 1.0
+    "I awoke."
+    "Where am I?"
+    "... was this my room?"
+    stop music
+    "Of course not."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_entrance_day with dissolve
+    "... This was."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
+    show sumner normal at center with dissolve
     s "Welcome to class."
     s "Like I mentioned earlier this week, we would be reading a poem called {i}Howl{/i} by Allen Ginsberg."
     "Like yesteday, a stack of papers was passed around."
@@ -2281,11 +2620,20 @@ label week_2_3:
     s "It looks like it's time for lunch."
     s "We will cover one more reading tomorrow before watching the movie adaptation on {i}Howl{/i} on Friday."
     s "Class dismissed."
+    hide sumner with dissolve
     "I began making my way to hall."
+    # dystopia
+    "... or so I thought."
+    
     ## lunch
     
 label week_2_4: 
     # Saito Reading: Everyday Aesthetic Qualities and Transience
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
+    show sumner normal at center with dissolve
     s "Good morning."
     s "We read Ginsberg's poem yesterday, but we will hold off on the movie until tomorrow."
     s "Today, we will read an article by Yuriko Saito."
@@ -2356,12 +2704,18 @@ label week_2_4:
     s "Well, it looks like it is time for lunch."
     s "I will see you all tomorrow. Class dismissed."
     "I was actually looking forward to tomorrow. I was interested in what the movie version of {i}Howl{/i} would be like."
+    hide sumner with dissolve
     ## lunch
 
 label week_2_5:
     # HOWL movie
     # worksheet due next friday
     # critical response paper due next friday as well
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
+    show sumner normal at center with dissolve
     s "Good morning class."
     s "Today we will watch the movie Howl."
     s "You may all be thinking, \"How can a poem be made into a movie?\""
@@ -2548,8 +2902,10 @@ label week_2_5:
     "I certainly did not want to rely on Aura for the ideas for all of my essays."
     "Once everyone got the handout, Ms. Sumner dismissed the class for lunch."
     s "I will see you all after the weekend. We will being a new topic next week, where we focus on the human senses."
-    
-    
+    hide sumner with dissolve
+    #dystopia
+    "Weekend?"
+
 label weekend_2:
     # weekend of week 2
     # work on Worksheet and critical response?
@@ -2558,6 +2914,10 @@ label week_3_1:
     #"The Senses In Play"
     # Video 1: Synesthesia: A Film by Jonathan Fowler
     # Video 2: TEDxCareltonU 2010: Jim Davies - The Science of Imagination
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
     s "Good morning, everybody."
     s "As I mentioned last week, the new topic we will be focusing on this week is regarding the human senses and perception."
@@ -2603,10 +2963,16 @@ label week_3_1:
     s "I hope you enjoyed the intro."
     s "This week, we will learn how we use our human senses to perceive art, and the nature behind human imagination."
     s "Class dismissed."
+    hide sumner with dissolve
     ## lunch
     
 label week_3_2:
     # "Performance" by Paul Bloom
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
+    show sumner normal at center with dissolve
     s "Good morning class."
     s "These next two days, we will be reading two articles by Paul Bloom, a psychologist."
     s "Today, we will begin with the article \"Performance\"."
@@ -2650,6 +3016,10 @@ label week_3_2:
 
 label week_3_3:
     # "Imagination" by Paul Bloom
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
     s "Good morning, class."
     s "Today, we will read the second article by Bloom."
@@ -2688,7 +3058,12 @@ label week_3_3:
 label week_3_4:
     # "Aesthetics, Neuroaesthetics, and the Sister Arts" - G. Gabrielle Starr
     # assignment: compare the 2 readings. due next friday.
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    
     s "Good morning everyone."
     s "We covered aesthetics in the first week, but we will take a brief trip back to that topic today with the article we will read."
     "Copies of the article were passed around to each student."
@@ -2726,8 +3101,16 @@ label week_3_4:
 label week_3_5:
     # "Against the Grain" and "Tender Buttons"
     # assignment: picture essay. due next friday.
-    "I handed in the worksheet and essay as I walked in."
+    #"I handed in the worksheet and essay as I walked in."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_entrance_day with dissolve
+    play music music_class fadein 1.0
+    "I handed in the worksheet and essay as I walked in from who-knows-where."
+    scene bg class_day with dissolve
+    "I was losing track of the days."
     show sumner normal at center with dissolve
+
     s "Good morning."
     s "The reading we do today will not be as intensive as yesterday."
     "The reading was passed around."
@@ -2778,19 +3161,45 @@ label week_3_5:
     "Surprisingly, I was actually looking forward to it."
     s "That will be all for today. Class dismissed."
     hide sumner with dissolve
+    "..."
     
 label weekend_3:
     # compare/contrast?
     # picture essay."
+    scene black with dissolve
+    "It was the weekend..."
     "I couldn't think of anything to put in my photo essay."
     "I decided I would do one based on the second piece we read, \"Tender Buttons\"."
+    "I came up with the first picture."
+    scene bg buttons1 with dissolve
+    "It didn't look too bad."
+    "Before long, I had the second one done."
+    scene bg buttons2 with dissolve
+    "Hmm."
+    "I continued putting together photos."
+    scene bg buttons3 with dissolve
+    "It was starting to come together."
+    "I liked the way it was turning out."
+    scene bg buttons4 with dissolve
+    "This was actually kind of fun."
+    "I figured I'd make just one more, and then call it a day."
+    scene bg buttons5 with dissolve
+    "..."
+    "It was complete."
+    scene black with dissolve
     
 label week_4_1:
     #Mod 4: Into The Digital Dimension
     #"How to Read a Digital Text"
     # Virginia Woolf's "The Waves"
     #assignment: interpret Wolf's "The Waves" using digital media: MC will use a photo essay...
+    
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+
     s "Good morning everyone. I hope you all had a wonderful weekend."
     s "This week we will focus on works of art in the digital dimension."
     s "Today we will be reading the first part of a short story and then listening to it."
@@ -2802,9 +3211,11 @@ label week_4_1:
     "It didn't seem that long. Then again, it was probably just a short section out of a huge work of literature."
     "I began to read."
     # PICTURE: WAVES / RISING SUN
+    show sunwaves at truecenter with zoomin
     "\"The sun had not yet risen...\"."
     "There definitely was a lot of imagery. Especially of light and dark."
     "I could imagine a sun rising on the horizon of the ocean, with waves crashing against the shore, and birds chirping on the roof of a beach house."
+    hide sunwaves with dissolve
     "I finished reading and looked up."
     show sumner normal at center with dissolve
     s "We will now listen to an audio recording of the reading."
@@ -2827,7 +3238,13 @@ label week_4_1:
 label week_4_2:
     # "Embodied Visions: What Does it Mean to Look At a Work of Art?" - Siri Hustvedt
     # part 1
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+
     s "Good morning, class. We will continue this week exploring the effects digital media has on art."
     s "Today and tomorrow we will be reading an article by an essayist and journalist, Siri Hustvedt."
     "A stack of papers was passed around the room as each student took one."
@@ -2841,6 +3258,7 @@ label week_4_2:
     "It started out by describing how we enjoy art due to the human faculty of a \"reflective self-consciousness\"."
     "As we grow, we become self-knowing and self-aware, something that separates us from the other animals."
     # PICTURE: human facial expression/mimicry/mimes?
+    show happysad at truecenter with zoomin
     "Human infants mimic others' facial expressions as they grow up. This occurs even before self-recognition in a mirror."
     "Facial expressions are important in that they affect thoughts, memories, and feelings."
     "We grow through others."
@@ -2850,19 +3268,21 @@ label week_4_2:
     "I thought of it as a form of communication."
     "The article reaffirmed my hypothesis by continuing, that art establishes a relationship between the viewer, or reader, or listener, and the artist."
     "Humans understand symbols better than words. We have to learn how to read and speak, but we can look at faces on people and tell immediately how they feel without having them tell us."
-    # PICTURE: enslavement, torture, death, mental institution
     "We were then given an example of this \"communication of feelings\"."
     "An artist by the name of Henry Darger experienced his parents' deaths and was sent to a mental institution."
     "His art work was reflective of his experiences. The article described his art as an \"epic of children enslaved by sadistic adults, a narrative of suffering and insurrection that finally ends in triumph.\""
+    hide happysad with dissolve
     "..."
     "The article then talked about how humans have an unconscious \"proprioceptive\" sense."
     "That is, we had the ability to sense position, orientation, and movements with our body parts in space."
     "This seemed like a lot to do with Shusterman's somaesthetics again..."
     "Anyways, our sensitivity to art is personal, and a viewer's reaction to art depends on the person or viewer."
     # PICTURE: colors of rainbow?
+    show rainbow at truecenter with zoomin
     "We \"feel\" green, or blue, or red, before we can even name the color."
     "This part reminded me of the week we learned about synesthesia."
     "We respond bodily to an object's perceived meaning according to past experience before we even identify the object."
+    hide rainbow with dissolve
     "..."
     "I had gotten about halfway through the article, when I heard Ms. Sumner's voice."
     show sumner normal at center with dissolve
@@ -2872,7 +3292,13 @@ label week_4_2:
 
 label week_4_3:
     # Embodied Visions/Siri Hustvedt part 2
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+
     s "Good morning, class."
     s "We will continue reading Hustvedt's article today."
     s "Please continue reading where you left off of yesterday."
@@ -2884,12 +3310,15 @@ label week_4_3:
     "... humans are inductive by nature."
     "\"When the brain receives a new sensory input from the world in the present, it generates a hypothesis based on what it knows from the past to guide recognition and action in the immediate future.\""
     # PICTURE: shiny glob of spit or shiny blue stone on ground
+    show bluestone at truecenter with zoomin
     "Hustvedt then gave an example of how her husband picked up what he thought to be a shiny blue stone, only for it to turn out to be a shiny glob of human spit."
     "I guess that was a real example of \"using past knowledge to predict the immediate future\"..."
     "Anyways, we engage in perceptual learning: we have expectation, and orientation."
     "For example, a blind person suddenly obtaining vision cannot use it well due to lack of experience."
+    hide bluestone with dissolve
     "..."
     # PICTURE: mirrors
+    show mirror at truecenter with dissolve
     "We mirror what we see in our minds. We mirror the world in our brains."
     "Hustvedt reflected her viewing of a fruit painting."
     "\"They are fictions in a fictitious world, an imaginary elsewhere that has opened up before our eyes...\""
@@ -2901,6 +3330,7 @@ label week_4_3:
     "In a sense, humans can be in two places at once. The real world is one. And then another is the imaginary space that exists side by side with real space."
     "The body is available not only in real situations into which it is drawn, but it can also turn aside from the world, lend itself to experimentation..."
     "The body can take its place in the realm of potential. In this realm of potential, art happens. In this fictional space, that we pretend exists, art happens."
+    hide mirror with dissolve
     "... and the article ended with that."
     "This was actually a pretty amazing article."
     "I looked up, and it seemed like the majority of the class was finished as well."
@@ -2915,11 +3345,18 @@ label week_4_3:
     "However, my hunger swept aside those thoughts, and all I could think about now was food."
     hide sumner with dissolve
     "I began to head out to lunch."
+    "... not."
 
 label week_4_4:
     # examples of Digital Media: the Alice visual novel?
     # from Electronic Literature collection
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+
     s "Good morning."
     s "Today we will take a look at an example of digital media."
     s "We will be playing through what is known as a \"visual novel\"."
@@ -2961,18 +3398,27 @@ label week_4_4:
 
 label week_4_5:
     # critical response paper: on some digital media. relate to siri hustvedt. due next friday on week 5.
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+
     s "Good morning, everybody."
     s "We are a bit ahead of schedule today, so I will let this class be a free study hall."
     s "You are free to work on whatever work you have. I suggest working on the essay."
     hide sumner with dissolve
     "Ms. Sumner retreated to her desk after making the announcement."
     "I decided to work on the essay."
+    "It was all I could do to pass the time."
     "I wrote about how there was a bunch of foreshadowing in the plot of the visual novel."
     "There was also the literary device of irony. It was ironic that the main character went back to save his friends, yet he himself wasn't \"saved\" in the end."
+    # maybe have MC shout out in anger here?
 
 label weekend_4:
     # weekend after week 4. perhaps work on critical response
+    scene black with dissolve
     "I finished up the essay. My main argument was that the medium in which art was presented didn't really matter."
     "I wrote about how there was no need to actually identify art in the media; rather, we just had to feel it. There was no need to give it a name."
     "The \"frame\" in which it was presented in didn't matter, as long as the feelings got through."
@@ -2980,7 +3426,12 @@ label weekend_4:
 label week_5_1:
     # Mod 5: What is Creativity?
     # Elizabeth Gilbert's TEDx Talk (eat pray love)
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    
     s "Good morning everybody. I hope you all had a wonderful weekend."
     s "This week we will be focusing on the topic of creativity."
     s "What is creativity? How do we become creative? How does one fail at being creative?"
@@ -2991,6 +3442,7 @@ label week_5_1:
     "It was a TED talk by Elizabeth Gilbert."
     "Apparently she had published a book called \"Eat Pray Love\" that was very popular."
     # PICTURE: Eat Pray Love
+    show eatpraylove at truecenter with zoomin
     "Gilbert" "After writing the book and seeing its success, I struggled to write the next book."
     "Gilbert" "The next book wouldn't be Eat Pray Love."
     "Gilbert" "The people who liked it wouldn't like it. The people who didn't like it still wouldn't like it."
@@ -3010,6 +3462,7 @@ label week_5_1:
     "Gilbert" "So I just kept writing. Many of my books will fail, some might succeed."
     "Gilbert" "But I will always be safe from the random hurricanes of outcome. You just have to find the best, worthiest thing that you love most, and build your house right on top of it."
     "Gilbert" "If you should some day, somehow, get vaulted from your home either by great failure or great success, work your best to find your way back home."
+    hide eatpraylove with dissolve
     "... and with that, the talk was over."
     show sumner normal with dissolve
     s "When I first went into the field of education, it was very difficult to get a job. My friends at the time would sometimes poke fun at me."
@@ -3025,7 +3478,13 @@ label week_5_1:
 
 label week_5_2:
     # How to Be Creative (PBS)
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    
     s "Good morning, class."
     s "We will watch one more presentation today, continuing the introduction to this unit on creativity."
     "The project was set up, and the film began displaying on the screen."
@@ -3035,12 +3494,15 @@ label week_5_2:
     p "Creativity is a process. First, you must ask yourself, \"How do I do this?\""
     p "You must expand your capacity for uncertainty."
     # PICTURE: binary search tree/decision tree that represents paths you can take
+    show decisiontree at truecenter with dissolve
     p "We must be in a state of \"negative capability\" - that is, the space where we don't know what's going to happen next."
     p "We must chase down ideas, and understand that not all of them are going to lead somewhere."
     p "However, even if an idea leads to a dead end, it was not a waste of time. This is because the experience of pursuing and idea will influence the next one."
     p "Creativity is a process of excitement and despair - you just have to keep at it."
     p "As Chuck Close once said, \"Inspiration is for amateurs. The rest of us just get up and go to work.\""
+    hide decisiontree with dissolve
     # PICTURE: the brain and creativity?
+    show brain at truecenter with zoomin
     "The presentation then moved to discuss the cognitive stages of creativity."
     p "The first stage is preparation."
     p "In this stage, we must learn a lot of things. We must learn the underlying structure of what we are trying to create, all the nitty-gritty stuff."
@@ -3056,8 +3518,10 @@ label week_5_2:
     p "We need to package it just the right way. The best works of art can go unnoticed if packaged the wrong way, or if the presentation isn't the best it could be."
     "That was some very technical stuff."
     "I didn't think that those four stages crossed anyone's minds when they were painting or playing an instrument."
+    hide brain with dissolve
     "The presentation then transitioned to a different subject."
     # PICTURE: working together
+    show together at truecenter with zoomin
     p "We must transcend the idea of \"the lone creator\"."
     p "Creativity needs healthy collaboration."
     p "A group of artists working together forms a type of \"meta-artist\", whose skill is the sum of all skills of a creative group."
@@ -3068,13 +3532,16 @@ label week_5_2:
     "From my experience, whenever I worked in a group project, everyone tended to work less than they would if they were to work alone, since everyone believed that the work would be divided up amongst the members of the group."
     "As a result, the \"total skill level\" was probably half of the sum of everyone's skill level."
     "Though, if a group of people formed and everyone in the group loved what they did, I guess I could see their creative skill being the sum of everybody's."
+    hide together with dissolve
     "The PBS broadcast then went on to talk about originality."
     # PICTURE: originality? the chicken vs the egg
+    show chickenegg at truecenter with zoomin
     p "Nothing is original. Ideas don't just come up out of the blue."
     p "Influence comes from somewhere, or some one else."
     p "We take other people's work, and copy it, or transform it, or combine multiple works to create something that is called \"original\"."
     p "In a sense, it is not really \"original\". We are merely performing mimicry, or making variations of a platform that already exists, or make existing ideas harmonize."
     p "For example, Gutenberg's invention, the printing press, was a mix of many different technologies."
+    hide chickenegg with dissolve
     "..."
     "The broadcast ended with some more examples of creativity that were not really that original."
     show sumner normal at center with dissolve
@@ -3088,7 +3555,13 @@ label week_5_2:
     
 label week_5_3:
     # "Creativity in the Post-Google Generation" by Edwards
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    
     s "Good morning, class."
     s "Today, we will read an article about creativity in an emerging world of technology."
     "An article was passed around to each student."
@@ -3097,6 +3570,7 @@ label week_5_3:
     hide sumner with dissolve
     "Edwards talked about artscientists as idea translators, and the five steps involved in the process."
     # PICTURE: creative process
+    show creativeprocess at truecenter with dissolve
     "First, they passionately profess their idea and their goals."
     "Then they study relevent topics pertaining to their ideas, and open themselves up to new experiences."
     "Third, they struggle through peer critique, alongside audience critique."
@@ -3111,8 +3585,10 @@ label week_5_3:
     "... and then she went on to graduate school to study electrical engineering and computer science."
     "It turns out that one day, she drew a strange attractor with notes, and came up with a theory in just about five minutes."
     "But she couldn't have done that without the process of getting to that point."
+    hide creativeprocess with dissolve
     "... in short, artscience was a mechanism of idea translation, in which the process matters most."
     # PICTURE: Julio Ottino's work - watercolor?
+    show watercolor at truecenter with zoomin
     "The article then shifted focus to a painter named Julio Ottino."
     "He synthesized mathematics and painting."
     "Mainly, he expressed his frustration with his politically torn country of Argentina in his paintings."
@@ -3120,6 +3596,7 @@ label week_5_3:
     "He had a watercolor pasted on his desk that he looked at every day."
     "This led to his discovery that chaotic stretching and folding of fluid elements led to effective mixing."
     "Eventually, he became a teacher of fluid-mixing."
+    hide watercolor with dissolve
     "... and the article ended there."
     show sumner normal at center with dissolve
     s "In this article, we saw two artscientists realize their potential as artists while making important discoveries in the world of science."
@@ -3127,15 +3604,26 @@ label week_5_3:
     s "In turn, many important discoveries can be brought about by art-science."
     "..."
     s "That will be it for today. Class dismissed."
+    hide sumner with dissolve
+    
     
 label week_5_4:
     # "The Philosophy of Creativity" by Paul and Kaufman
+
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    
     s "Good morning class."
     s "Today we will be reading yet an article about creativity."
-    # I wish I was creative enough to get myself out of this mess
+    #dystopia
+    "I wish I was creative enough to get myself out of this mess."
+    ##
     "Like always, the article was handed out."
     "I looked down and read the title."
+    hide sumner with dissolve
     "\"Introducing The Philosophy of Creativity\", by Elliot Samuel Paul and Scott Barry Kaufman."
     "We had to have the proper philosophy in order to be creative."
     "We must \"lose ourselves\" in what is beautiful."
@@ -3145,11 +3633,23 @@ label week_5_4:
     "Intrinsic motivation included pure love for the subject on which we were working on."
     "Extrinsic motivations were things like money, fame, and social status..."
     "In order to be creative, we must be interested, intrinsically, in something worthwhile."
+    # dystopia
+    "... and the cycle began again."
+    
     
 label week_5_5:
     # assignment: paper on troubles you've had being "creative"
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
     s "The assignment this week will be to write an essay on troubles you've had being \"creative\"."
+    hide sumner with dissolve
+    #dystopia
+    scene black with dissolve
+    "..."
+    "Well, that one was short-lived."
 
 label weekend_5:
     # weekend after 5th week
@@ -3158,22 +3658,63 @@ label weekend_5:
 label week_6_1:
     # Mod 6: "We Who Are Creative"
     # RIP: A Remix Manifesto
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    s "... will be watching ..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    show sumner normal at center with dissolve
+    s "... RIP... A Remix Manifesto ..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     # at this point, everything is breaking down
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... the past is trying to control the future by monetizing all digital media..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... but the information should be free ..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... we make new things by remixing..."
     p "... but the creators of the material want to make money out of it..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... the copyright law enforcement officer says... it doesn't matter if he's creative or not, if he's using other people's stuff..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... culture builds on the past ..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... copyright was designed to encourage people to create, not to hinder creation..."
-    p "... in 18 months, we had assembled the largest library of human creativity ever, and had done it for free... and the corporations ruined that..."
+    p "... in 18 months, we had assembled the largest library of human creativity ever, and had done it for free... "
+    p "... and the corporations ruined that..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
     p "... the law made 52 million people copyright criminals ..."
-
+    
+    # more things will go here
+    scene black with dissolve
+    "..."
+    
 label week_6_2:
     # Youtube: -- Posthuman: An Introduction to Transhumanism
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg class_day with dissolve
+    play music music_class fadein 1.0
     show sumner normal at center with dissolve
+    s "... Posthuman: ..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    show sumner normal at center with dissolve
+    s "... an Introduction to..."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    show sumner normal at center with dissolve   
+    s "... transhumanism..."
+    scene bg blackgrid with dissolve
     # even more breaking down
+    "I strugged to find my way out."
+    #4th wall. remove after initial release.
+    show aura normal with dissolve
+    a "Come this way!"
+    a "... is a possible thing I may say in the final version."
+    hide aura with dissolve
+    #...#
+    
     "... we are shackled by our primitive, Darwinian brains..."
     "... transhumanism... to fundamentally revolutionize what it means to be human by way of technological advancements..."
     "... three supers... super longevity... super intelligence... super well-being..."
@@ -3182,13 +3723,12 @@ label week_6_2:
     
 
 label finale:
-    
-    return
+
     
 
 label end:
     #MC: Had always like comic books as a child; make visual novel
-    "Whatever the outcome of this visual novel, I knew I would be wholly invested into it."
+    #"Whatever the outcome of this visual novel, I knew I would be wholly invested into it."
     play music music_end fadein 1.0
     scene bg park_night with dissolve
     show aura enthusiastic at left with dissolve
@@ -3196,8 +3736,13 @@ label end:
     show dylan normal at center with dissolve
     #show randall glad
     #show mom normal
-    $ aura_name = "Aura"
+    "Well."
+    "That's it!"
+    #$ aura_name = "Aura"
     a "Thanks for playing!"
+    d "Yeah bud, thanks for playing!"
+    s "I hope you learned a lot."
+    "..."
     jump _credits
     
 label _credits:
@@ -3223,16 +3768,36 @@ label _credits:
     with Pause(360)
     hide text with dissolve
 
-
     return
     
 # TEST SCENES FOR DEBUGGING #
 label test_scene:
     $ aura_name = "Aura"
     $ sumner_name = "Yoyo"
-    scene bg class_day with dissolve
+    $ mc_name = "River"
+    "I decided to ask Aura."
+    r "Hey, what's going on?"
+    show aura he with dissolve
+    play music music_pondering
+    a "..."
+    "Something wasn't right."
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    scene bg hallway with dissolve
+    show aura he at center
+    show dylan thinking at left
+    "Ugh... {w} It was getting worse."
+    "I noticed a girl passing by."
+    r "Hey, you!"
+    "I grabbed her."
+    show passergirl normal at left with moveinleft
+    pg "?!"
+    #Flashing grid world
+    scene bg blackgrid with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
+    with Fade(0.25, 0, 0.85, color="#fff")
     show sumner normal with dissolve
-    s "HEYO"
+    s "HEYO. Welcome to the debug scene... I think."
     show origami at truecenter
     s "Cool picture huh?"
     s "AM I COOL OR WHAT."
